@@ -1,0 +1,14 @@
+[project]
+name = "Lol"
+
+[env]
+platform = "atmelavr"
+board = "uno"
+
+[wokwi]
+# Wokwi simulation configuration
+# See https://docs.wokwi.com/guides/project-config for more options
+version = 1
+firmware = "firmware.hex"
+# Optionally, specify a diagram file if you have one
+# diagram = "diagram.json"
