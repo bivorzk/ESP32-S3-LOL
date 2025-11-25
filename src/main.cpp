@@ -57,39 +57,34 @@ const uint8_t hidReportDescriptor[] = {
 };
 
 void setup() {
+  // --- Spoof any real keyboard here ---
+  USB.VID(0x046D);                             // Logitech
+  USB.PID(0xC548);                             // G513 exact PID
+  USB.manufacturer("Logitech");
+  USB.product("G513 RGB Mechanical Gaming Keyboard");
+  USB.serial("133713371337");
 
+  USB.begin();        // Starts TinyUSB + CDC + HID
+  Keyboard.begin();   // Register keyboard
+  Serial.begin(115200);
 
-  USB.VID(0x046D);            // Vendor ID: Logitech
-  USB.PID(0xC548);            // Product ID: G513
-  USB.manufacturerName("Logitech");
-  USB.productName("G513 RGB Mechanical Gaming Keyboard");
-  USB.serialNumber("123456");       // Or generate dynamically
-  // HID.begin(hidReportDescriptor, sizeof(hidReportDescriptor));  // Custom HID report
-  HID.begin(); 
+  while (!Serial) { delay(10); }  // Wait for Python to open the COM port
 
-  Serial.begin(123456);
-  while (!Serial) {;}
-  
-  USB.begin();
-  Keyboard.begin();
-  // Keyboard.print("Hello, world!");
-  Serial.println("Hello world.");
-  
-  int result = myFunction(2, 3);
+  Serial.println("ESP32-S3 Fake Keyboard READY");
+  Serial.println("Send any text → it will be typed instantly");
 }
 
 void loop() {
-  
   if (Serial.available()) {
-    char c = Serial.read();
-    Keyboard.write(c);
+    String line = Serial.readStringUntil('\n');  // Read full line from Python
+    line.trim();                                 // Remove \r\n
 
-    Serial.print("Sent key: ");
-    Serial.println(c);
+    if (line.length() > 0) {
+      Keyboard.print(line);     // Types exactly what Python sent
+      Keyboard.println();       // Press Enter at the end (optional, remove if unwanted)
+      Serial.println("[Typed] " + line);  // Debug echo
+    }
   }
-
-
-}
 
 // put function definitions here:
 int myFunction(int x, int y) {
