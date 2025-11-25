@@ -9,6 +9,6 @@ ser.write(b'Hello, world!\n')
 with open('src/resource/mouse_movements.txt', 'r') as file:
     for line in file:
         ser.write(line.encode())
-        time.sleep(0.34)  
+        time.sleep(0.34)
 
 ser.close()

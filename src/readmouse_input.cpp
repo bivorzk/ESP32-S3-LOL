@@ -32,9 +32,9 @@ int main() {
     }  
  
     int x, y;
-while (running) {
-    ifstream file("src/resource/mouse_coords.txt" , ios::in);
-    string s;
+
+    std::ifstream file("src/resource/mouse_coords.txt" , std::ios::in);
+    std::string s;
     if (file.is_open()) {
         while (getline(file, s)) { 
             //std::cout << s << std::endl;
@@ -46,7 +46,7 @@ while (running) {
                 if (s[i] == ' ') {
                     x = stoi(s.substr(0, i));
                     y = stoi(s.substr(i + 1));
-                    Sleep(340);
+                    Sleep(993);
                     SetCursorPos(x, y);
                     cout << "X: " << x << " Y: " << y << endl;
                     break;
@@ -57,10 +57,7 @@ while (running) {
 
         }
         file.close();
-    } else {
-        cout << "Unable to open file";
-    }
-
+        
 }
 
     cout << "Hello, World!" << endl;
