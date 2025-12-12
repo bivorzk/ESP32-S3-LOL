@@ -52,9 +52,6 @@ int main() {
                     break;
                 }
             }
-
-            
-
         }
         file.close();
         
