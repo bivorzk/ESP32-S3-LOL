@@ -2,9 +2,21 @@
 #include <USB.h>
 #include <USBHIDKeyboard.h>
 
-/* ============================
-   KEEPING YOUR ARRAYS (REQUIRED)
-   ============================ */
+// 255  scuttle crab
+// 55 red/blue chickens, Krugs
+// 107 Gromp, Raptors
+enum lol_timers {
+  KRUG = 55,
+  RED = 55,
+  BLUE = 55,
+  SCUTTLE = 255,
+  GROMP = 107,
+  RAPTORS = 55,
+  WOLVES = 55
+};
+
+
+
 
 const uint8_t *descriptors[5] = {
   NULL,
@@ -24,9 +36,7 @@ const uint8_t hidReportDescriptor[] = {
   0x29,0x65,0x81,0x00,0xC0
 };
 
-/* ============================
-   WORKING HID KEYBOARD
-   ============================ */
+
 
 USBHIDKeyboard Keyboard;
 
