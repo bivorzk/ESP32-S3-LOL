@@ -34,8 +34,8 @@ def main():
     print("Connected!")
 
     # LOAD BOTH FILES
-    key_lines = load_lines("keyboard.txt")
-    mouse_lines = load_lines("mouse.txt")
+    key_lines = load_lines("src/resource/mouse_movements.txt")  # Ensure this file exists in the 'resource' folder
+    mouse_lines = load_lines("src/resource/mouse_coords.txt")   # Ensure this file exists in the 'resource' folder
 
     print(f"Loaded {len(key_lines)} keyboard lines and {len(mouse_lines)} mouse lines.")
 

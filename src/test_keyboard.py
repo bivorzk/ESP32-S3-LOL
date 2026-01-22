@@ -1,12 +1,6 @@
 import serial
 import time
 
-
-
-
-
-
-
 def test_esp32_keyboard():
     try:
         # Connect to ESP32
