@@ -2,21 +2,6 @@
 #include <USB.h>
 #include <USBHIDKeyboard.h>
 
-// 255  scuttle crab
-// 55 red/blue chickens, Krugs
-// 107 Gromp, Raptors
-enum lol_timers {
-  KRUG = 55,
-  RED = 55,
-  BLUE = 55,
-  SCUTTLE = 255,
-  GROMP = 107,
-  RAPTORS = 55,
-  WOLVES = 55
-};
-
-
-
 
 const uint8_t *descriptors[5] = {
   NULL,
@@ -35,7 +20,6 @@ const uint8_t hidReportDescriptor[] = {
   0x75,0x08,0x15,0x00,0x25,0x65,0x05,0x07,0x19,0x00,
   0x29,0x65,0x81,0x00,0xC0
 };
-
 
 
 USBHIDKeyboard Keyboard;
